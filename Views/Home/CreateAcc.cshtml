@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    @*<script src="send.js"></script>-->*@
+    <style>
+        /* Add padding to containers */
+        .container {
+            padding: 16px;
+            /*align-content: center;*/
+            background-color: #499195;
+            /*width: 100%;*/
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            width: 30%;
+        }
+
+        .modal-header, h4, .close {
+            background-color: #499195;
+            color: white !important;
+            text-align: center;
+            font-size: 30px;
+        }
+
+        .modal-footer {
+            background-color: #499195;
+            color: white;
+        }
+
+        #btnLogin {
+            background-color: #499195;
+        }
+    </style>
+    <script>
+        function sendData() {
+
+            let stockName = document.getElementById("stkvelname").value;
+
+            $.ajax({
+                url: 'https://hackit.grindrodbank.co.za/api/customers',
+                type: 'GET',
+                dataType: 'json',
+                headers: {
+                    //Bearer Token
+                    'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICIzeV9tSW9TNENacGNTWmppSHgzXzV5eDRIWTJQT0lPcVRDcnRHZ2k0Sl9FIn0.eyJqdGkiOiI2ZTNkZmNjMi02ZTA0LTRkMTgtODcyZS1hNWUxNzQ2NGU5ZTMiLCJleHAiOjE1MzgzMjAyNTIsIm5iZiI6MCwiaWF0IjoxNTM4MzAyMjUyLCJpc3MiOiJodHRwczovL2hhY2tpdGF1dGguZ3JpbmRyb2RiYW5rLmNvLnphL2F1dGgvcmVhbG1zL2dyaW5kcm9kIiwiYXVkIjoiS2ljay1Tb21lLUNvZGUiLCJzdWIiOiJmOmNkNDM0ODQ3LTZiM2MtNGM0ZC04YmUzLTg4MzZmOGQ0ODBiNzoyMDczVEVTVElEIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiS2ljay1Tb21lLUNvZGUiLCJhdXRoX3RpbWUiOjE1MzgzMDIwOTQsInNlc3Npb25fc3RhdGUiOiJjMjU5OGUyZi03YzUwLTQzYzAtYTU1NS1mOTYzYTc5N2NlYjQiLCJhY3IiOiIwIiwiYWxsb3dlZC1vcmlnaW5zIjpbIioiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImNyZWF0ZV9jdXN0b21lciIsImFwcHJvdmVfY3VzdG9tZXIiLCJhcHByb3ZlX2FjY291bnQiLCJ1bWFfYXV0aG9yaXphdGlvbiIsInJlYWRfYWNjb3VudCIsImNyZWF0ZV9hY2NvdW50IiwicmVhZF90cmFuc2FjdGlvbnMiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJncm91cF9tZW1iZXJzaGlwIjpbIi9hZ2VudF9yZWFkZXIiLCIvYWdlbnRfY2FwdHVyZSIsIi9hZ2VudF9hcHByb3ZlciJdLCJhZ2VudF9pZCI6WyIxNDc0Il0sInByZWZlcnJlZF91c2VybmFtZSI6IjIwNzNURVNUSUQiLCJlbWFpbCI6IlRFU1QyMDczQGVtYWlsLmNvbSJ9.j2SRP1nJYgR5rdrMlz0KO0yZNi0ulO_mtDHTJ1NKWLVeWX0c_YC-0zZCr4hyPzV_1oUWIqUYOEAmofiZwTrYxY66kp8ukI_poK5VEV0qUnY-Oo_-v0uMzP06uHVUODBmWJ8p5gAfzDByvHKwoyikbfF74oRKXHe1gX0ypFvjcYJZfo69HrYdySKbL5HJDxSvEKf3j3-DepqMxPfRrE4FpZpqSX_a0OVMkeyCSmeDG0Fg1cUObTF-YQ-mBpOU9AsgbfAavwLT0yPxqxHzFZGRjJOmVGvOZG1e8IBr3TfxjP_dBcgSsCwbkPIVyDu8GaLTYYERhwrbTdEEbB3W_h1WVQ'
+
+                },
+                contentType: 'application/json; charset=utf-8',
+                success: function (result) {
+                    var customers = result.customers;
+
+                    $.each(customers, function (index, customer) {
+                        $('#customer-list').append('<div class="customer-item">Account ID' + customer.defaultCustomer.name1 +' '+ customer.customerId + '<div>');
+                    });
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>View Members</h2>
+        <!-- Modal -->
+        <!--<div class="modal fade" id="modalCreateAcc" role="dialog">
+          <div class="modal-dialog">-->
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header" style="padding:35px 50px;">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4><span class=""><i class="fade fa-users fa-2x"></i></span> &nbsp; View Members</h4>
+            </div>
+            <div class="modal-body" style="padding:40px 50px;">
+                <form role="form">
+                    <div class="form-group">
+                        <label for="stockvelname"><span class="glyphicon glyphicon-user"></span> Stockvel Name</label>
+                        <input type="text" class="form-control" id="stkvelname" placeholder=" ">
+                    </div>
+                    <!--<div class="checkbox">
+                      <label><input type="checkbox" value="" checked>Remember me</label>
+                    </div>-->
+                    <button type="button" id="btnLogin" class="btn btn-success btn-block" onclick="sendData()"><span class="glyphicon glyphicon-off"></span> View</button>
+                </form>
+
+                <div id="customer-list"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript"></script>
+</body>
+</html> 

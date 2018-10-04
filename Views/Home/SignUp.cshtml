@@ -1,0 +1,242 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Sign Up</title>
+
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        /* Add padding to containers */
+        .container {
+            padding: 16px;
+            /*align-content: center;*/
+            background-color: #499195;
+            /*width: 100%;*/
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            width: 30%;
+        }
+
+        /* Full-width input fields */
+        input[type=text], input[type=password] {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+
+        .input {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+
+        input[type=text]:focus, input[type=password]:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+
+        /* Overwrite default styles of hr */
+        hr {
+            border: 1px solid #f1f1f1;
+            margin-bottom: 25px;
+        }
+
+        /* Set a style for the submit/register button */
+        .registerbtn {
+            background-color: white;
+            color: black;
+            padding: 16px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+        }
+
+            .registerbtn:hover {
+                opacity: 1;
+            }
+
+        /* Add a blue text color to links */
+        a {
+            color: dodgerblue;
+        }
+
+        /* Set a grey background color and center the text of the "sign in" section */
+        .signin {
+            background-color: #f1f1f1;
+            text-align: center;
+        }
+    </style>
+
+    <style>
+        /* Style the navigation menu */
+        .topnav {
+            overflow: hidden;
+            position: relative;
+        }
+
+            /* Hide the links inside the navigation menu (except for logo/home) */
+            .topnav #myLinks {
+                display: none;
+            }
+
+            /* Style navigation menu links */
+            .topnav a {
+                color: white;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+                display: block;
+            }
+
+                /* Style the hamburger menu */
+                .topnav a.icon {
+                    display: block;
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                }
+
+                /* Add a grey background color on mouse-over */
+                .topnav a:hover {
+                    background-color: #ddd;
+                    color: black;
+                }
+
+        /* Style the active link (or home/logo) */
+        .active {
+            color: white;
+        }
+    </style>
+    <script>
+        /* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
+        function myFunction() {
+            var x = document.getElementById("myLinks");
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
+        }
+    </script>
+</head>
+<body>
+        <form action="action_page.php">
+            <div class="container">
+                <div class="topnav">
+                    <a href="#home" class="active">&zwnj;</a>
+                    <!-- Navigation links (hidden by default) -->
+                    <div id="myLinks">
+                        <a href="@Url.Action("MainMenu","Home")">Main Menu</a>
+                        <a href="@Url.Action("Profiles","Home")">Profile</a>
+                        <a href="@Url.Action("Banking","Home")">Banking</a>
+                        <a href="@Url.Action("Transactions","Home")">Transactions</a>
+                        <a href="@Url.Action("Investment","Home")">Investments</a>
+                        <a href="@Url.Action("SupplierFinder","Home")">Supplier Finder</a>
+                        <a href="@Url.Action("Index","Home")">Financial Goals</a>
+                        <a href="@Url.Action("FinAdvisor","Home")">Financial Advisor</a>
+                    </div>
+                    <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+                    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                </div>
+                <div class="img">
+                    <img src="~/img/akhlogowhite.png" style="width:40%; height:40%; margin-right: auto; margin-left: auto; display: block;" />
+                </div>
+
+                <h1 style="text-align:center">Sign Up</h1>
+                <p style="text-align:center">Please fill in this form to create an account.</p>
+                <hr>
+
+                <label for="username"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="username" required />
+
+                <label for="email"><b>Email</b></label>
+                <input class="input" type="email" placeholder="Enter Email" name="email" required />
+
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" id="first" name="psw" required />
+
+                <label for="psw-repeat"><b>Confirm Password</b></label>
+                <input type="password" placeholder="Repeat Password" id="second" onchange="IsValid()" name="psw-repeat" required />
+                <span id="error" style="color:red;" hidden>Not Matched</span>
+
+                <label for="entity"><b>Entity Type</b></label>
+                <select class="input" name="entity" required>
+                    <option value="select">Select</option>
+                    <option value="individual">Individual</option>
+                    <option value="trust">Trust</option>
+                    <option value="cc">CC</option>
+                    <option value="ptyLtd">(Pty)Ltd</option>
+                    <option value="ltd">Ltd</option>
+                </select>
+
+                <label for="defCust"><b>Default Customer</b></label>
+                <input class="input" type="text" placeholder="Customer Full Name" name="defCust" required />
+
+                <label for="cell"><b>Cellphone Number</b></label>
+                <input class="input" maxlength="14" type="text" placeholder="Cell Number" name="cell" required />
+
+                <label for="identity"><b>Identification Number</b></label>
+                <input class="input" maxlength="255" type="text" placeholder="Identification" name="identity" required />
+                <hr>
+
+                <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+                <button type="submit" class="registerbtn">Register</button>
+            </div>
+
+            <div class="container signin">
+                <p>Already have an account? <a href="@Url.Action("SignIn","Home")">Sign in</a>.</p>
+            </div>
+        </form>
+
+    <script>
+        function IsValid()
+        {
+            var firstPass = document.getElementById("first");
+            var secondPass = document.getElementById("second");
+            //var error = document.getElementById("error");
+
+            if (firstPass !== secondPass) {
+                document.getElementById("error").style.display = 'block';
+                secondPass.value = "";
+            }
+
+            if (firstPass === secondPass) {
+                document.getElementById("error").style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

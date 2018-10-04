@@ -1,0 +1,358 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Investments</title>
+
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+
+    <script>
+        function openCity(cityName, elmnt, color) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].style.backgroundColor = "";
+            }
+            document.getElementById(cityName).style.display = "block";
+            elmnt.style.backgroundColor = color;
+
+        }
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+    </script>
+    <style>
+        body {
+            font-family: "Lato", sans-serif;
+        }
+
+        .header {
+            background-color: #499195;
+        }
+
+        .container {
+            padding: 16px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 50px;
+            width: 60%;
+        }
+
+        .fluid-container {
+        }
+
+        .tablink {
+            background-color: #555;
+            color: white;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            font-size: 17px;
+            width: 25%;
+        }
+
+            .tablink:hover {
+                background-color: #777;
+            }
+
+        /* Style the tab content */
+        .tabcontent {
+            color: white;
+            display: none;
+            padding: 50px;
+            text-align: center;
+        }
+
+        #London {
+            background-color: #499195;
+        }
+
+        #Paris {
+            background-color: #43B6A1;
+        }
+
+        #Tokyo {
+            background-color: #4A8560;
+        }
+
+        #Oslo {
+            background-color: #679C85;
+        }
+    </style>
+
+    <style>
+        body {
+            font-family: "Lato", sans-serif;
+        }
+
+        .header {
+            background-color: #499195;
+        }
+
+        .h1 {
+            text-align: center;
+            color: white;
+        }
+
+        .tablink {
+            background-color: #555;
+            color: white;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            font-size: 17px;
+            width: 25%;
+        }
+
+            .tablink:hover {
+                background-color: #777;
+            }
+
+        /* Style the tab content */
+        .tabcontent {
+            color: white;
+            display: none;
+            padding: 50px;
+            text-align: center;
+        }
+
+
+        #London {
+            background-color: #499195;
+        }
+
+        #Paris {
+            background-color: #43B6A1;
+        }
+
+        #Tokyo {
+            background-color: #4A8560;
+        }
+
+        #Oslo {
+            background-color: #679C85;
+        }
+
+        .fluid-container {
+            background-color: #B0B0B0;
+        }
+    </style>
+
+    <style>
+        /* Style the navigation menu */
+        .topnav {
+            overflow: hidden;
+            position: relative;
+        }
+
+            /* Hide the links inside the navigation menu (except for logo/home) */
+            .topnav #myLinks {
+                display: none;
+            }
+
+            /* Style navigation menu links */
+            .topnav a {
+                color: white;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+                display: block;
+            }
+
+                /* Style the hamburger menu */
+                .topnav a.icon {
+                    display: block;
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                }
+
+                /* Add a grey background color on mouse-over */
+                .topnav a:hover {
+                    background-color: #ddd;
+                    color: black;
+                }
+
+        /* Style the active link (or home/logo) */
+        .active {
+            color: white;
+        }
+    </style>
+
+
+    <script>
+        /* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
+        function myFunction() {
+            var x = document.getElementById("myLinks");
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="col-md-12">
+            <div class="topnav">
+                <a href="#home" class="active">&zwnj;</a>
+                <!-- Navigation links (hidden by default) -->
+                <div id="myLinks">
+                    <a href="@Url.Action("MainMenu","Home")">Main Menu</a>
+                    <a href="@Url.Action("Profiles","Home")">Profile</a>
+                    <a href="@Url.Action("Banking","Home")">Banking</a>
+                    <a href="@Url.Action("Transactions","Home")">Transactions</a>
+                    <a href="@Url.Action("SupplierFinder","Home")">Supplier Finder</a>
+                    <a href="@Url.Action("Index","Home")">Financial Goals</a>
+                    <a href="@Url.Action("FinAdvisor","Home")">Financial Advisor</a>
+                </div>
+                <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+            <div id="header">
+                <h1>Investment</h1>
+            </div>
+        </div>
+        <div class="fluid-container">
+            <div id="London" class="tabcontent">
+                <h1>Real Investment</h1>
+                <p>Current Investment Balance: R40 000</p>
+            </div>
+
+            <div id="Paris" class="tabcontent">
+                <h1>Rell Invest</h1>
+                <p>Current Investment Balance: R40 000</p>
+            </div>
+
+            <div id="Tokyo" class="tabcontent">
+                <h1>Money Market</h1>
+                <p>Current Investment Balance: R60 000</p>
+            </div>
+
+            <div id="Oslo" class="tabcontent">
+                <h1>Hope Investment</h1>
+                <p>Current Investment Balance: R50 000</p>
+            </div>
+
+            <button class="tablink" onclick="openCity('London', this, '#499195')" id="defaultOpen">H Investment</button>
+            <button class="tablink" onclick="openCity('Paris', this, '#43B6A1')">R Investment</button>
+            <button class="tablink" onclick="openCity('Tokyo', this, '#4A8560')">M Market</button>
+            <button class="tablink" onclick="openCity('Oslo', this, '#679C85')">E Investment</button>
+        </div>
+        <!--<div class="fluid-container">
+    <div class="md-12">
+    <div id="Oslo" class="tabcontent">
+      <h1>Rell Invest</h1>
+      <p>R40 000</p>
+    </div>
+
+    <div id="Paris" class="tabcontent">
+      <h1>Money Market</h1>
+      <p>R60 000</p>
+    </div>
+
+    <div id="Tokyo" class="tabcontent">
+      <h1>Hope Investment</h1>
+      <p>R50 000</p>
+    </div>
+
+
+
+    <button class="tablink" onclick="openCity('London', this, '#499195')" id="defaultOpen">Rell Invest</button>
+    <button class="tablink" onclick="openCity('Paris', this, 'blue')">Money Market</button>
+    <button class="tablink" onclick="openCity('Tokyo', this, '#499195')">Hope Investment</button>
+    <button class="tablink" onclick="openCity('Oslo', this, 'black')">O Invest</button>
+    </div>
+    </div>-->
+
+        <div class="fluid-container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name of Investment</th>
+                        <th>Amount</th>
+                        <th>Mature Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Rell Invest</td>
+                        <td>R40 000</td>
+                        <td>01 December 2020</td>
+                    </tr>
+                    <tr>
+                        <td>Hope Investment </td>
+                        <td>R50 000</td>
+                        <td>23 September 2019</td>
+                    </tr>
+                    <tr>
+                        <td>O Investment</td>
+                        <td>R10 000</td>
+                        <td>25 March 2019</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="fluid-container">
+            <h2>Projected Value</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Months of Investment</th>
+                        <th>Interest Rate</th>
+                        <th>Amount</th>
+
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>6 Months</td>
+                        <td>4%</td>
+                        <td>R30 000</td>
+                    </tr>
+                    <tr>
+                    <tr>
+                        <td>6 Months</td>
+                        <td>4%</td>
+                        <td>R30 000</td>
+                    </tr>
+                    <tr>
+                        <td>6 Months</td>
+                        <td>4%</td>
+                        <td>R30 000</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</body>
+</html>
